@@ -1,6 +1,15 @@
 #ifndef _ALIENFX_H_
 #define _ALIENFX_H_
-#include <windows.h>
+
+#ifdef _WIN32
+	#include <windows.h>
+#elif defined __unix__ 
+  #include <unistd.h>
+
+  int Sleep(int sleepMs) { return usleep(sleepMs * 1000); }
+  
+  typedef unsigned char byte;
+#endif
 
 #define ALIENFX_USER_CONTROLS 0x01
 #define ALIENFX_SLEEP_LIGHTS 0x02
@@ -23,6 +32,16 @@
 #define ALIENFX_READY 0x10
 #define ALIENFX_BUSY 0x11
 #define ALIENFX_UNKOWN_COMMAND 0x12
+
+#define SEND_REQUEST_TYPE 0x21
+#define SEND_REQUEST 0x09
+#define SEND_VALUE 0x202
+#define SEND_INDEX 0x00
+
+#define READ_REQUEST_TYPE 0xa1
+#define READ_REQUEST 0x01
+#define READ_VALUE 0x101
+#define READ_INDEX 0x0
 
 bool AlienfxInit();
 void AlienfxDeinit();
