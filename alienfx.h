@@ -11,6 +11,8 @@
   typedef unsigned char byte;
 #endif
 
+//#define ALIENFX_DEBUG
+
 #define ALIENFX_USER_CONTROLS 0x01
 #define ALIENFX_SLEEP_LIGHTS 0x02
 #define ALIENFX_ALL_OFF 0x03
