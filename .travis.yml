@@ -1,0 +1,17 @@
+language: cpp
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - libusb-1.0-0-dev
+
+branches:
+  only:
+    - master
+    - travis
+
+script:
+  - mkdir build && cd build
+  - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp
+  - make
